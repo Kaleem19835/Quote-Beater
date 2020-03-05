@@ -57,10 +57,13 @@ $mail->Subject = 'Flight Details';
 $mail->Body = $bodyContent;
 
 // Check if message was sent
-
-if(!$mail->send()) {
-	header("Location: ../../../index.html");
+if(!$mail->send())
+	$_SESSION['msg'] = "Message has been sent! We will get in touch with you!";
+	header("Location: ../../../index.php");
 } else {
-	header("Location: ../../../index.html");
+	$_SESSION['msg'] = "Message could not be sent! We will get in touch with you!";
+	header("Location: ../../../index.php");
 }
- ?>
+
+header("Location: ../../../index.php");
+?>
